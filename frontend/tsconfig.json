@@ -1,0 +1,6 @@
+{
+  // https://nuxt.com/docs/guide/concepts/typescript
+  // This config simply extends the auto-generated one in ./.nuxt
+  // (created by `nuxt prepare`, which runs on `npm install`).
+  "extends": "./.nuxt/tsconfig.json"
+}

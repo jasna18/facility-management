@@ -1,0 +1,4 @@
+# Build-processed images go here.
+# Reference them with the ~/assets path, e.g.:
+#   <img :src="logo" />  with  import logo from '~/assets/images/logo.png'
+# or in CSS:  background-image: url('~/assets/images/bg.jpg');
