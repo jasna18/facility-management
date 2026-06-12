@@ -1,17 +1,38 @@
 <script setup lang="ts">
-const open = ref(false)
+const open = ref(false)        // mobile menu
+const dropdown = ref(false)    // services dropdown (mobile click / desktop fallback)
 
-const links = [
+interface NavLink {
+  label: string
+  to: string
+  children?: { label: string; to: string }[]
+}
+
+const links: NavLink[] = [
   { label: 'Home', to: '/' },
-  { label: 'Services', to: '/services' },
+  {
+    label: 'Services',
+    to: '/services',
+    children: [
+      { label: 'All Services', to: '/services' },
+      { label: 'MEP', to: '/mep' },
+      { label: 'Civil & Fit-out', to: '/civil-fitout' }
+    ]
+  },
   { label: 'About', to: '/about' },
   { label: 'Projects', to: '/projects' },
   { label: 'Contact', to: '/contact' }
 ]
 
-// Close the mobile menu whenever the route changes
+// Close menus whenever the route changes
 const route = useRoute()
-watch(() => route.path, () => (open.value = false))
+watch(
+  () => route.path,
+  () => {
+    open.value = false
+    dropdown.value = false
+  }
+)
 </script>
 
 <template>
@@ -23,15 +44,43 @@ watch(() => route.path, () => (open.value = false))
       </NuxtLink>
 
       <nav class="nav" :class="{ 'nav--open': open }">
-        <NuxtLink
-          v-for="link in links"
-          :key="link.to"
-          :to="link.to"
-          class="nav-link"
-          active-class="nav-link--active"
-        >
-          {{ link.label }}
-        </NuxtLink>
+        <template v-for="link in links" :key="link.to">
+          <!-- Link with dropdown -->
+          <div v-if="link.children" class="has-dropdown" @mouseenter="dropdown = true" @mouseleave="dropdown = false">
+            <button
+              class="nav-link nav-trigger"
+              :aria-expanded="dropdown"
+              @click="dropdown = !dropdown"
+            >
+              {{ link.label }}
+              <svg class="caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true">
+                <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" />
+              </svg>
+            </button>
+            <div class="dropdown" :class="{ 'dropdown--open': dropdown }">
+              <NuxtLink
+                v-for="child in link.children"
+                :key="child.to"
+                :to="child.to"
+                class="dropdown-item"
+                active-class="dropdown-item--active"
+              >
+                {{ child.label }}
+              </NuxtLink>
+            </div>
+          </div>
+
+          <!-- Plain link -->
+          <NuxtLink
+            v-else
+            :to="link.to"
+            class="nav-link"
+            active-class="nav-link--active"
+          >
+            {{ link.label }}
+          </NuxtLink>
+        </template>
+
         <NuxtLink to="/contact" class="btn btn-primary nav-cta">Get a Quote</NuxtLink>
       </nav>
 
@@ -90,11 +139,59 @@ watch(() => route.path, () => (open.value = false))
   font-weight: 500;
   font-size: 0.95rem;
   transition: color var(--transition);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
 }
 .nav-link:hover,
 .nav-link--active { color: var(--text); }
 .nav-link--active { color: var(--accent-text); }
 .nav-cta { margin-left: 8px; }
+
+/* Dropdown */
+.has-dropdown { position: relative; }
+.nav-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.caret { transition: transform var(--transition); }
+.has-dropdown:hover .caret,
+.dropdown--open ~ .nav-trigger .caret { transform: rotate(180deg); }
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 0;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: opacity var(--transition), transform var(--transition);
+}
+.dropdown--open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.dropdown-item {
+  padding: 10px 12px;
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 0.92rem;
+  transition: background var(--transition), color var(--transition);
+}
+.dropdown-item:hover { background: var(--surface-2); }
+.dropdown-item--active { color: var(--accent-text); }
 
 .burger {
   display: none;
@@ -136,5 +233,17 @@ watch(() => route.path, () => (open.value = false))
     pointer-events: auto;
   }
   .nav-cta { margin-left: 0; }
+
+  /* On mobile the dropdown renders inline (static) */
+  .has-dropdown { width: 100%; }
+  .dropdown {
+    position: static;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    box-shadow: none;
+    margin-top: 10px;
+    background: var(--surface-2);
+  }
 }
 </style>
