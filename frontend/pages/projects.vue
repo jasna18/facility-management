@@ -78,7 +78,7 @@ useHead({ title: 'Projects — ProFacility' })
   margin-top: auto;
   padding-top: 14px;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 .chips { display: flex; flex-wrap: wrap; gap: 12px; }
 .chip {
@@ -89,5 +89,5 @@ useHead({ title: 'Projects — ProFacility' })
   font-size: 0.92rem;
   transition: border-color var(--transition), color var(--transition);
 }
-.chip:hover { border-color: var(--accent); color: var(--accent); }
+.chip:hover { border-color: var(--accent-text); color: var(--accent-text); }
 </style>

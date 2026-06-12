@@ -149,7 +149,7 @@ useHead({ title: 'Contact — ProFacility' })
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--accent);
+  color: var(--accent-text);
   margin-bottom: 6px;
 }
 .info-item a, .info-item p { color: var(--text); margin: 0; }
@@ -173,7 +173,7 @@ input, select, textarea {
 }
 input:focus, select:focus, textarea:focus {
   outline: none;
-  border-color: var(--accent);
+  border-color: var(--accent-text);
   box-shadow: 0 0 0 3px rgba(212, 255, 0, 0.15);
 }
 textarea { resize: vertical; }

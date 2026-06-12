@@ -93,7 +93,7 @@ useHead({ title: 'About — ProFacility' })
   border-bottom: 1px solid var(--border);
 }
 .metric:last-child { border-bottom: none; }
-.metric strong { font-size: 2rem; color: var(--accent); }
+.metric strong { font-size: 2rem; color: var(--accent-text); }
 .metric span { color: var(--muted); font-size: 0.92rem; }
 .value-icon {
   display: grid;
@@ -103,7 +103,7 @@ useHead({ title: 'About — ProFacility' })
   border-radius: 12px;
   background: var(--surface-2);
   border: 1px solid var(--border);
-  color: var(--accent);
+  color: var(--accent-text);
   font-size: 1.2rem;
   margin-bottom: 14px;
 }

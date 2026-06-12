@@ -52,7 +52,7 @@ watch(() => route.path, () => (open.value = false))
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(18, 18, 18, 0.85);
+  background: rgba(244, 244, 246, 0.82);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
@@ -78,7 +78,7 @@ watch(() => route.path, () => (open.value = false))
   color: var(--accent-ink);
   font-weight: 800;
 }
-.logo-text strong { color: var(--accent); }
+.logo-text strong { color: var(--accent-text); }
 
 .nav {
   display: flex;
@@ -93,7 +93,7 @@ watch(() => route.path, () => (open.value = false))
 }
 .nav-link:hover,
 .nav-link--active { color: var(--text); }
-.nav-link--active { color: var(--accent); }
+.nav-link--active { color: var(--accent-text); }
 .nav-cta { margin-left: 8px; }
 
 .burger {

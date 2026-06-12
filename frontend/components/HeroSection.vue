@@ -60,8 +60,8 @@ defineProps<{
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(90deg, rgba(18, 18, 18, 0.92) 0%, rgba(18, 18, 18, 0.72) 45%, rgba(18, 18, 18, 0.35) 100%),
-    linear-gradient(0deg, rgba(18, 18, 18, 0.85) 0%, transparent 40%);
+    linear-gradient(90deg, rgba(232, 232, 234, 0.95) 0%, rgba(232, 232, 234, 0.78) 45%, rgba(232, 232, 234, 0.30) 100%),
+    linear-gradient(0deg, rgba(232, 232, 234, 0.90) 0%, transparent 42%);
 }
 .orb {
   position: absolute;
@@ -100,7 +100,7 @@ defineProps<{
   gap: 4px;
   padding: 20px;
   border-radius: var(--radius-sm);
-  background: rgba(18, 18, 18, 0.7);
+  background: rgba(244, 244, 246, 0.78);
   border: 1px solid var(--border);
   backdrop-filter: blur(6px);
   font-size: 0.85rem;
@@ -108,7 +108,7 @@ defineProps<{
 }
 .panel-card strong {
   font-size: 1.8rem;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 .dot {
   display: inline-block;

@@ -24,7 +24,7 @@ defineProps<{ service: Service }>()
   place-items: center;
   font-size: 1.5rem;
   border-radius: 12px;
-  background: var(--surface-2);
+  background: linear-gradient(145deg, var(--surface-2), var(--gray-soft));
   border: 1px solid var(--border);
   margin-bottom: 18px;
 }

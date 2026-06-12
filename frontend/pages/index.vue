@@ -3,10 +3,10 @@ const { featured } = useServices()
 const services = featured(3)
 
 const stats = [
-  { value: '500+', label: 'Sites managed' },
+  { value: '100+', label: 'Sites managed' },
   { value: '99.98%', label: 'Service uptime' },
   { value: '24/7', label: 'Response cover' },
-  { value: '18 yrs', label: 'In operation' }
+  { value: '1yrs', label: 'In operation' }
 ]
 
 const steps = [
@@ -27,7 +27,7 @@ useHead({ title: 'ProFacility — Integrated Facility Management' })
     />
 
     <!-- Stats -->
-    <section class="section--tight">
+    <section class="section--tight section--alt">
       <div class="container">
         <div class="grid grid-4 stats">
           <StatCounter
@@ -39,8 +39,6 @@ useHead({ title: 'ProFacility — Integrated Facility Management' })
         </div>
       </div>
     </section>
-
-    <hr class="divider" />
 
     <!-- Featured services -->
     <section class="section">
@@ -64,10 +62,8 @@ useHead({ title: 'ProFacility — Integrated Facility Management' })
       </div>
     </section>
 
-    <hr class="divider" />
-
     <!-- How it works -->
-    <section class="section">
+    <section class="section section--alt">
       <div class="container">
         <div class="section-head">
           <span class="eyebrow">How it works</span>
@@ -94,7 +90,7 @@ useHead({ title: 'ProFacility — Integrated Facility Management' })
   display: block;
   font-size: 1.4rem;
   font-weight: 800;
-  color: var(--accent);
+  color: var(--accent-text);
   margin-bottom: 10px;
 }
 </style>

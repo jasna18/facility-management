@@ -21,7 +21,7 @@ defineProps<{
   display: block;
   font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 800;
-  color: var(--accent);
+  color: var(--accent-text);
   letter-spacing: -0.02em;
 }
 .label {
