@@ -60,8 +60,8 @@ defineProps<{
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(90deg, rgba(232, 232, 234, 0.95) 0%, rgba(232, 232, 234, 0.78) 45%, rgba(232, 232, 234, 0.30) 100%),
-    linear-gradient(0deg, rgba(232, 232, 234, 0.90) 0%, transparent 42%);
+    linear-gradient(90deg, rgba(64, 64, 65, 0.94) 0%, rgba(64, 64, 65, 0.72) 45%, rgba(64, 64, 65, 0.26) 100%),
+    linear-gradient(0deg, rgba(64, 64, 65, 0.88) 0%, transparent 42%);
 }
 .orb {
   position: absolute;
@@ -100,7 +100,7 @@ defineProps<{
   gap: 4px;
   padding: 20px;
   border-radius: var(--radius-sm);
-  background: rgba(244, 244, 246, 0.78);
+  background: rgba(58, 58, 60, 0.72);
   border: 1px solid var(--border);
   backdrop-filter: blur(6px);
   font-size: 0.85rem;

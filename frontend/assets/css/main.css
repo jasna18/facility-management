@@ -4,27 +4,27 @@
    ===================================================================== */
 
 :root {
-  /* Surfaces — luxurious light gray */
-  --bg: #e8e8ea;
-  --surface: #f4f4f6;
-  --surface-2: #dcdce1;
-  --border: #cdced4;
+  /* Surfaces — gray, main color #585858 */
+  --bg: #585858;            /* MAIN color */
+  --surface: #626264;       /* cards — a touch lighter */
+  --surface-2: #6e6f72;     /* raised surfaces */
+  --border: #767679;
 
-  /* Gray scale — anchored on #707070 */
-  --gray: #707070;          /* mid gray — secondary text, mid tones */
-  --gray-soft: #9a9a9c;     /* lighter mid gray */
-  --gray-band: #d7d7da;     /* tinted section band */
-  --gray-deep: #34353a;     /* deep graphite — footer / dark band */
+  /* Gray scale — shades mixed around #585858 / #707070 */
+  --gray: #707070;          /* mid gray */
+  --gray-soft: #9a9b9e;     /* lighter mid gray */
+  --gray-band: #636366;     /* lighter band */
+  --gray-deep: #3a3a3c;     /* deepest gray — footer / dark band */
 
-  /* Text — graphite (not pure black) */
-  --text: #232427;
-  --muted: #707070;         /* secondary text uses the mid gray */
+  /* Text — light on gray */
+  --text: #f3f3f4;
+  --muted: #d0d0d3;         /* secondary text */
 
   /* Accent — fluorescent yellow */
   --accent: #d4ff00;        /* fills: buttons, badges, dots */
-  --accent-soft: #c6f000;   /* hover fill */
+  --accent-soft: #e2ff4d;   /* hover fill */
   --accent-ink: #1b1d12;    /* text placed on top of accent fills */
-  --accent-text: #5d6a00;   /* deep lime — accent-colored TEXT, readable on light */
+  --accent-text: #d4ff00;   /* accent-colored TEXT — bright on charcoal */
 
   /* Layout */
   --maxw: 1180px;
@@ -33,8 +33,8 @@
   --gap: 24px;
 
   /* Effects */
-  --shadow: 0 14px 34px rgba(31, 32, 36, 0.14);
-  --glow: 0 0 0 1px rgba(212, 255, 0, 0.55), 0 8px 26px rgba(160, 190, 0, 0.30);
+  --shadow: 0 16px 38px rgba(0, 0, 0, 0.42);
+  --glow: 0 0 0 1px rgba(212, 255, 0, 0.55), 0 8px 26px rgba(212, 255, 0, 0.18);
   --transition: 200ms ease;
 
   /* Type */
@@ -50,7 +50,7 @@ body {
   font-family: var(--font);
   /* Subtle top-to-bottom gray wash for depth */
   background:
-    linear-gradient(180deg, #ededef 0%, var(--bg) 36%, #e2e2e5 100%) fixed,
+    linear-gradient(180deg, #5f5f61 0%, var(--bg) 38%, #4d4d4d 100%) fixed,
     var(--bg);
   color: var(--text);
   line-height: 1.6;
@@ -87,7 +87,7 @@ img { max-width: 100%; display: block; }
 
 /* Tinted gray band — alternate sections for rhythm/depth */
 .section--alt {
-  background: linear-gradient(180deg, var(--gray-band), #cfcfd3);
+  background: linear-gradient(180deg, var(--gray-band), #4f4f51);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
@@ -167,7 +167,7 @@ img { max-width: 100%; display: block; }
 }
 .card:hover {
   transform: translateY(-4px);
-  border-color: rgba(93, 106, 0, 0.45);
+  border-color: rgba(212, 255, 0, 0.5);
   box-shadow: var(--shadow);
 }
 

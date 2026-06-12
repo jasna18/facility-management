@@ -52,7 +52,7 @@ watch(() => route.path, () => (open.value = false))
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(244, 244, 246, 0.82);
+  background: rgba(80, 80, 82, 0.82);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
