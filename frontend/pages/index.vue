@@ -23,7 +23,7 @@ useHead({ title: 'ProFacility — Integrated Facility Management' })
     <HeroSection
       eyebrow="Integrated Facility Management"
       title="One partner for a building that runs flawlessly."
-      subtitle="ProFacility combines cleaning, maintenance, security, HVAC and energy services into a single, accountable contract — so you can focus on your business."
+      subtitle="ProFacility combines maintenance, HVAC and energy services into a single, accountable contract — so you can focus on your business."
     />
 
     <!-- Stats -->

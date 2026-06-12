@@ -10,14 +10,7 @@ export interface Service {
 }
 
 const services: Service[] = [
-  {
-    id: 'cleaning',
-    title: 'Cleaning & Janitorial',
-    icon: '🧼',
-    summary:
-      'Daily, deep and specialist cleaning that keeps your premises spotless, hygienic and presentable.',
-    features: ['Office & commercial cleaning', 'Washroom hygiene', 'Floor & carpet care', 'Window cleaning']
-  },
+
   {
     id: 'maintenance',
     title: 'Building Maintenance',
@@ -35,14 +28,6 @@ const services: Service[] = [
     features: ['AC installation & service', 'Air-quality management', 'Energy audits', 'Smart controls']
   },
   {
-    id: 'security',
-    title: 'Security Services',
-    icon: '🛡️',
-    summary:
-      'Trained personnel and modern systems to protect your people, assets and premises around the clock.',
-    features: ['Manned guarding', 'CCTV & access control', 'Patrol & response', 'Risk assessment']
-  },
-  {
     id: 'landscaping',
     title: 'Landscaping & Grounds',
     icon: '🌿',
@@ -50,14 +35,7 @@ const services: Service[] = [
       'Professional grounds care that keeps external spaces healthy, safe and welcoming all year round.',
     features: ['Lawn & garden care', 'Seasonal planting', 'Irrigation', 'Pathway upkeep']
   },
-  {
-    id: 'pest',
-    title: 'Pest Control',
-    icon: '🐜',
-    summary:
-      'Integrated, discreet pest management programmes that protect health, stock and reputation.',
-    features: ['Inspection & prevention', 'Treatment programmes', 'Rodent & insect control', 'Compliance reporting']
-  }
+  
 ]
 
 export const useServices = () => {
