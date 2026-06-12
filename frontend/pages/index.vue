@@ -79,6 +79,8 @@ useHead({ title: 'ProFacility — Integrated Facility Management' })
       </div>
     </section>
 
+    <ClientLogos />
+
     <CtaBanner />
   </div>
 </template>

@@ -33,6 +33,16 @@ watch(
     dropdown.value = false
   }
 )
+
+// Close the dropdown when clicking anywhere outside a dropdown trigger
+function onDocClick(e: MouseEvent) {
+  const target = e.target as HTMLElement
+  if (!target.closest('.has-dropdown')) {
+    dropdown.value = false
+  }
+}
+onMounted(() => document.addEventListener('click', onDocClick))
+onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
 </script>
 
 <template>
@@ -46,11 +56,12 @@ watch(
       <nav class="nav" :class="{ 'nav--open': open }">
         <template v-for="link in links" :key="link.to">
           <!-- Link with dropdown -->
-          <div v-if="link.children" class="has-dropdown" @mouseenter="dropdown = true" @mouseleave="dropdown = false">
+          <div v-if="link.children" class="has-dropdown">
             <button
               class="nav-link nav-trigger"
+              :class="{ 'is-open': dropdown }"
               :aria-expanded="dropdown"
-              @click="dropdown = !dropdown"
+              @click.stop="dropdown = !dropdown"
             >
               {{ link.label }}
               <svg class="caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true">
@@ -159,7 +170,17 @@ watch(
 }
 .caret { transition: transform var(--transition); }
 .has-dropdown:hover .caret,
-.dropdown--open ~ .nav-trigger .caret { transform: rotate(180deg); }
+.nav-trigger.is-open .caret { transform: rotate(180deg); }
+
+/* Invisible bridge so hovering across the gap keeps the menu open */
+.has-dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 16px;
+}
 
 .dropdown {
   position: absolute;
@@ -177,8 +198,11 @@ watch(
   transform: translateY(-8px);
   pointer-events: none;
   transition: opacity var(--transition), transform var(--transition);
+  z-index: 60;
 }
-.dropdown--open {
+/* Open via click (JS) or hover (desktop) */
+.dropdown--open,
+.has-dropdown:hover .dropdown {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;

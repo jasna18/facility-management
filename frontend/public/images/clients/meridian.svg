@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 48" fill="none">
+  <circle cx="24" cy="24" r="13" stroke="#cfd0d3" stroke-width="3"/>
+  <path d="M18 28V20l6 5 6-5v8" stroke="#cfd0d3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="48" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#cfd0d3" letter-spacing="0.5">Meridian</text>
+</svg>
