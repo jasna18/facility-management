@@ -258,16 +258,21 @@ onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
   }
   .nav-cta { margin-left: 0; }
 
-  /* On mobile the dropdown renders inline (static) */
+  /* On mobile the dropdown renders inline and is collapsed until tapped */
   .has-dropdown { width: 100%; }
   .dropdown {
     position: static;
-    opacity: 1;
     transform: none;
     pointer-events: auto;
     box-shadow: none;
-    margin-top: 10px;
+    margin-top: 0;
     background: var(--surface-2);
+    display: none;        /* hidden until the Services button is tapped */
+    opacity: 1;
+  }
+  .dropdown--open {
+    display: flex;
+    margin-top: 10px;
   }
 }
 </style>
