@@ -97,6 +97,7 @@ onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
 
       <button
         class="burger"
+        :class="{ 'is-open': open }"
         :aria-expanded="open"
         aria-label="Toggle menu"
         @click="open = !open"
@@ -104,6 +105,9 @@ onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
         <span /><span /><span />
       </button>
     </div>
+
+    <!-- Backdrop behind the mobile drawer -->
+    <div class="backdrop" :class="{ 'backdrop--show': open }" @click="open = false" />
   </header>
 </template>
 
@@ -112,8 +116,9 @@ onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(80, 80, 82, 0.82);
-  backdrop-filter: blur(10px);
+  /* No backdrop-filter: it would make the header the containing block for
+     the fixed-position mobile drawer and clip it to the header height. */
+  background: rgba(70, 70, 72, 0.96);
   border-bottom: 1px solid var(--border);
 }
 .bar {
@@ -121,6 +126,8 @@ onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
   align-items: center;
   justify-content: space-between;
   height: 72px;
+  position: relative;
+  z-index: 2;
 }
 .logo {
   display: flex;
@@ -225,35 +232,64 @@ onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
   border: none;
   cursor: pointer;
   padding: 6px;
+  position: relative;
+  z-index: 10;
 }
 .burger span {
   width: 24px;
   height: 2px;
   background: var(--text);
   border-radius: 2px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+/* Animate hamburger into an X when open */
+.burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.is-open span:nth-child(2) { opacity: 0; }
+.burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Backdrop (mobile only) */
+.backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition);
+  z-index: 1;
 }
 
 @media (max-width: 860px) {
   .burger { display: flex; }
+  .backdrop { display: block; }
+  .backdrop--show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Slide-in drawer from the right */
   .nav {
-    position: absolute;
-    top: 72px;
-    left: 0;
+    position: fixed;
+    top: 0;
     right: 0;
+    bottom: 0;
+    width: min(82vw, 320px);
+    height: 100vh;
+    height: 100dvh;
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
-    padding: 24px;
+    padding: 96px 24px 28px;
     background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    transform: translateY(-12px);
-    opacity: 0;
+    border-left: 1px solid var(--border);
+    transform: translateX(100%);
     pointer-events: none;
-    transition: opacity var(--transition), transform var(--transition);
+    overflow-y: auto;
+    transition: transform 280ms ease;
+    z-index: 5;
   }
   .nav--open {
-    transform: translateY(0);
-    opacity: 1;
+    transform: translateX(0);
     pointer-events: auto;
   }
   .nav-cta { margin-left: 0; }
